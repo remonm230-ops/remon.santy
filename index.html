@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة زفاف ريمون وسانتي</title>
+    
+    <!-- الأكواد الخاصة بظهور الصورة عند مشاركة الرابط (Open Graph) -->
+    <meta property="og:title" content="دعوة زفاف ريمون وسانتي">
+    <meta property="og:description" content="فرحتنا مش هتكمل غير بيكم.. نتشرف بدعوتكم لحضور إكليلنا المبارك">
+    <meta property="og:image" content="preview.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #d4af37; /* الذهبي الملكي */
+            --text-color: #ffffff;
+            --bg-overlay: rgba(0, 0, 0, 0.78); 
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            /* تم تحريك الخلفية لليمين بشكل أكبر (5%) لضبط ظهور وجه سانتي بدقة */
+            background: url('background.jpg') no-repeat 5% 12% fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+            50% { text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
+            100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        }
+
+        .invitation-container {
+            background: var(--bg-overlay);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid var(--primary-color);
+            max-width: 480px;
+            width: 92%;
+            margin: 20px auto;
+            position: relative;
+            box-sizing: border-box;
+            overflow: hidden; 
+            animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .content-padding {
+            padding: 30px 20px;
+        }
+
+        .animated-item {
+            opacity: 0;
+            animation: fadeInUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1s; }
+
+        .header-section {
+            margin-top: 15px; 
+            margin-bottom: 15px;
+        }
+
+        .couple-names {
+            font-family: 'Amiri', serif;
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: bold;
+            animation: pulseGlow 3s infinite;
+        }
+
+        /* الإطار الدائري العلوي الكبير */
+        .image-slider {
+            position: relative;
+            width: 260px;
+            height: 260px;
+            margin: 30px auto 25px auto;
+            border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            overflow: hidden;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .image-slider img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            object-position: center top;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out, transform 3s ease;
+        }
+
+        .image-slider img.active {
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        /* الأقسام البينية لعرض الصور بشكل كامل وممتد وصور أكبر */
+        .blended-image-section {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin: 35px 0;
+            overflow: hidden;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .blended-image-section img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .blended-image-section img.active {
+            opacity: 0.55; 
+        }
+
+        .blended-image-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.9) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .blended-content {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 0 20px 20px 20px;
+        }
+
+        .bible-verse {
+            font-family: 'Amiri', serif;
+            font-style: italic;
+            color: #f5eedc;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin: 10px auto;
+            padding: 10px 0;
+            max-width: 95%;
+        }
+
+        .standalone-verse {
+            border-top: 1px dashed rgba(212, 175, 55, 0.4);
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.4);
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        .verse-ref {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--primary-color);
+            margin-top: 5px;
+            font-weight: bold;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .invitation-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin: 25px 0;
+        }
+
+        .parents-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .parent-box {
+            flex: 1;
+            text-align: center;
+        }
+
+        .parent-title {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: normal;
+            margin-bottom: 4px;
+        }
+
+        .parent-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .wedding-call {
+            color: #ddd;
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        .couple-grid {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .title-label {
+            font-size: 1.2rem;
+            color: #eee;
+            font-weight: bold;
+        }
+
+        .name-label {
+            font-family: 'Amiri', serif;
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-top: 5px;
+            animation: pulseGlow 3s infinite;
+        }
+
+        .event-details {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px 15px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-right: 4px solid var(--primary-color);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .detail-item {
+            font-size: 1.25rem;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .detail-item span {
+            color: var(--primary-color);
+            display: block;
+            margin-top: 5px;
+            font-weight: normal;
+        }
+
+        .big-day {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .big-number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            line-height: 1;
+            margin: 5px 0;
+            display: block;
+        }
+
+        .big-year {
+            font-size: 1.3rem;
+            color: #ddd;
+            display: block;
+        }
+
+        .big-time {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .hall-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            display: block;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .hall-sub {
+            font-size: 1.1rem;
+            color: #eee;
+            display: block;
+            margin-top: 3px;
+        }
+
+        .henna-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .henna-section {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px dashed var(--primary-color);
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .henna-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .henna-info {
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #d4af37, #aa841b);
+            color: #000;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-form {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1e90ff, #0052cc);
+            color: #fff !important;
+            text-decoration: none;
+            padding: 14px 24px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            margin: 25px auto;
+            width: 85%;
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+            animation: pulseGlow 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .btn-form:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30, 144, 255, 0.5);
+        }
+
+        .countdown-section {
+            margin-top: 0px;
+        }
+
+        .countdown-title {
+            font-size: 1.1rem;
+            color: #eee;
+            margin-bottom: 15px;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .countdown-box {
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 10px;
+            border-radius: 10px;
+            min-width: 65px;
+        }
+
+        .countdown-time {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--primary-color);
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 1000;
+        }
+
+        .rotating {
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 375px) {
+            .couple-names { font-size: 2.3rem; }
+            .name-label { font-size: 2rem; }
+            .parent-name { font-size: 1.1rem; }
+            .parent-title { font-size: 0.95rem; }
+            .image-slider { width: 210px; height: 210px; } 
+            .blended-image-section { height: 260px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-control" id="musicBtn" onclick="toggleMusic(event)">🔇</div>
+
+    <audio id="weddingMusic" loop>
+        <source src="wedding-audio.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="invitation-container">
+        
+        <div class="content-padding">
+            <div class="header-section animated-item delay-1">
+                <div class="couple-names">ريمون & سانتي</div>
+                
+                <div class="image-slider slider-group-1">
+                    <img src="couple1.jpg" alt="ريمون وسانتي 1" class="active">
+                    <img src="couple2.jpg" alt="ريمون وسانتي 2">
+                    <img src="couple3.jpg" alt="ريمون وسانتي 3">
+                    <img src="couple4.jpg" alt="ريمون وسانتي 4">
+                </div>
+            </div>
+
+            <div class="bible-verse standalone-verse animated-item delay-2">
+                "لأَنَّكُمْ فِي قُلْبِي، أَنْتُمْ الَّذِينَ فِي رِبَاطٍ وَاحِدٍ مَعِي فِي النِّعْمَةِ."
+                <span class="verse-ref">— فيلبي 1: 7</span>
+            </div>
+
+            <div class="invitation-text animated-item delay-3">
+                <div style="font-size: 1.3rem; color: #f5eedc; font-weight: bold;">يتشرف كل من</div>
+                
+                <div class="parents-container">
+                    <div class="parent-box">
+                        <div class="parent-title">الأستاذ</div>
+                        <div class="parent-name">مجدي رشدي</div>
+                    </div>
+                    <div class="parent-box">
+                        <div class="parent-title">الأستاذ</div>
+                        <div class="parent-name">ملاك مسعود</div>
+                    </div>
+                </div>
+
+                <div class="wedding-call">بدعوتكم لحضور صلاة اكليل</div>
+                
+                <div class="couple-grid">
+                    <div class="couple-grid-item">
+                        <div class="title-label">الابن المبارك</div>
+                        <div class="name-label">ريمون</div>
+                    </div>
+                    <div class="couple-grid-item">
+                        <div class="title-label">الابنة المباركة</div>
+                        <div class="name-label">سانتي</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-details animated-item delay-4">
+                <div class="detail-item">
+                    صلاة الإكليل المبارك:
+                    <span>كنيسة الثلاث قديسين الأروام ببني سويف</span>
+                    <a href="https://maps.app.goo.gl/iFir6MskbSaK3wTp9?g_st=iw" target="_blank" class="btn-link">📍 موقع الكنيسة على الخريطة</a>
+                </div>
+                
+                <div class="detail-item">
+                    يوم
+                    <span class="big-day">الاثنين</span>
+                    <span class="big-number">13</span>
+                    <span class="big-year">يوليو 2026</span>
+                </div>
+                
+                <div class="detail-item">
+                    الساعة:
+                    <span class="big-time">7:30 م</span>
+                </div>
+                
+                <div class="detail-item">
+                    حفل الزفاف (القاعة):
+                    <span class="hall-title">توليب</span>
+                    <span class="hall-sub">بنادي ضباط القوات المسلحة</span>
+                    <a href="https://maps.app.goo.gl/UjhZvHBhcuJ2RAQFA?g_st=iw" target="_blank" class="btn-link">📍 موقع القاعة على الخريطة</a>
+                </div>
+            </div>
+
+            <div class="bible-verse standalone-verse animated-item" style="margin-bottom: 0;">
+                "وَأَمَّا أَنَا وَبَيْتِي فَنَعْبُدُ الرَّبَّ."
+                <span class="verse-ref">— يشوع 24: 15</span>
+            </div>
+        </div>
+
+        <div class="blended-image-section slider-group-2">
+            <img src="couple2.jpg" alt="ريمون وسانتي 2" class="active">
+            <img src="couple3.jpg" alt="ريمون وسانتي 3">
+            <img src="couple4.jpg" alt="ريمون وسانتي 4">
+            <img src="couple1.jpg" alt="ريمون وسانتي 1">
+            
+            <div class="blended-content">
+            </div>
+        </div>
+
+        <div class="content-padding" style="padding-top: 0; padding-bottom: 0;">
+            <div class="henna-container animated-item delay-5">
+                <div class="henna-section">
+                    <div class="henna-title">🎉 حنة العروسة 🎉</div>
+                    <div class="henna-info">
+                        يوم السبت <strong>11 / 7 / 2026</strong><br>
+                        <span>بقاعة بابا دوحة بالفشن</span>
+                    </div>
+                </div>
+
+                <div class="henna-section">
+                    <div class="henna-title">🎉 حنة العريس 🎉</div>
+                    <div class="henna-info">
+                        يوم الأحد <strong>12 / 7 / 2026</strong><br>
+                        <span>أمام منزل والد العريس</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://forms.gle/v4hxH1CDF2eo3JLu5" target="_blank" class="btn-form">✍️ شاركونا بكلمة تهنئة أو رسالة من القلب</a>
+        </div>
+
+        <div class="blended-image-section slider-group-3" style="height: 300px; margin-bottom: 0;">
+            <img src="couple4.jpg" alt="ريمون وسانتي 4" class="active">
+            <img src="couple1.jpg" alt="ريمون وسانتي 1">
+            <img src="couple2.jpg" alt="ريمون وسانتي 2">
+            <img src="couple3.jpg" alt="ريمون وسانتي 3">
+            
+            <div class="blended-content">
+                <div class="countdown-section" style="width: 100%;">
+                    <div class="countdown-title" style="font-weight: bold; text-shadow: 1px 1px 4px #000; color: #fff;">متبقي على مشاركتنا الفرحة:</div>
+                    <div class="countdown-container">
+                        <div class="countdown-box" style="background: rgba(0,0,0,0.7);">
+                            <div id="days" class="countdown-time">00</div>
+                            <div class="countdown-label">يوم</div>
+                        </div>
+                        <div class="countdown-box" style="background: rgba(0,0,0,0.7);">
+                            <div id="hours" class="countdown-time">00</div>
+                            <div class="countdown-label">ساعة</div>
+                        </div>
+                        <div class="countdown-box" style="background: rgba(0,0,0,0.7);">
+                            <div id="minutes" class="countdown-time">00</div>
+                            <div class="countdown-label">دقيقة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function initSliders() {
+            const groups = ['.slider-group-1', '.slider-group-2', '.slider-group-3'];
+            groups.forEach(groupClass => {
+                const images = document.querySelectorAll(`${groupClass} img`);
+                let currentIndex = 0;
+                setInterval(() => {
+                    images[currentIndex].classList.remove('active');
+                    currentIndex = (currentIndex + 1) % images.length;
+                    images[currentIndex].classList.add('active');
+                }, 3800); 
+            });
+        }
+        initSliders();
+
+        const music = document.getElementById('weddingMusic');
+        const musicBtn = document.getElementById('musicBtn');
+
+        function autoPlayOnInteraction() {
+            if (music.paused) {
+                music.play().then(() => {
+                    musicBtn.classList.add('rotating');
+                    musicBtn.innerHTML = "🎵";
+                    removeInteractionListeners();
+                }).catch(error => {
+                    console.log("في انتظار تفاعل حقيقي على الشاشة.");
+                });
+            }
+        }
+
+        document.addEventListener('click', autoPlayOnInteraction);
+        document.addEventListener('touchstart', autoPlayOnInteraction);
+
+        function removeInteractionListeners() {
+            document.removeEventListener('click', autoPlayOnInteraction);
+            document.removeEventListener('touchstart', autoPlayOnInteraction);
+        }
+
+        function toggleMusic(event) {
+            event.stopPropagation();
+            removeInteractionListeners();
+            
+            if (music.paused) {
+                music.play();
+                musicBtn.classList.add('rotating');
+                musicBtn.innerHTML = "🎵";
+            } else {
+                music.pause();
+                musicBtn.classList.remove('rotating');
+                musicBtn.innerHTML = "🔇";
+            }
+        }
+
+        const weddingDate = new Date("July 13, 2026 19:30:00").getTime();
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.querySelector(".countdown-section").innerHTML = "<div class='countdown-title' style='color: var(--primary-color); font-size: 1.5rem;'>أكليل سعيد ومبارك! 🎉</div>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
