@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دعوة زفاف ريمون وسانتي</title>
     
-    <!-- الأكواد الخاصة بظهور الصورة عند مشاركة الرابط (Open Graph) -->
-    <meta property="og:title" content="دعوة زفاف ريمون وسانتي">
-    <meta property="og:description" content="فرحتنا مش هتكمل غير بيكم.. نتشرف بدعوتكم لحضور إكليلنا المبارك">
-    <meta property="og:image" content="preview.jpg">
+    <!-- أوسمة مشاركة الرابط (Open Graph & Twitter Cards) -->
+    <meta property="og:title" content="Remon & Santy | Wedding Invitation">
+    <meta property="og:description" content="You're invited to celebrate our wedding.">
+    <meta property="og:image" content="https://wedding-eight-eta-28.vercel.app/preview.jpg">
+    <meta property="og:url" content="https://wedding-eight-eta-28.vercel.app">
     <meta property="og:type" content="website">
+
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Remon & Santy | Wedding Invitation">
+    <meta name="twitter:description" content="You're invited to celebrate our wedding.">
+    <meta name="twitter:image" content="https://wedding-eight-eta-28.vercel.app/preview.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +30,6 @@
 
         body {
             font-family: 'Cairo', sans-serif;
-            /* تم تحريك الخلفية لليمين بشكل أكبر (5%) لضبط ظهور وجه سانتي بدقة */
             background: url('background.jpg') no-repeat 5% 12% fixed;
             background-size: cover;
             margin: 0;
@@ -101,7 +105,6 @@
             animation: pulseGlow 3s infinite;
         }
 
-        /* الإطار الدائري العلوي الكبير */
         .image-slider {
             position: relative;
             width: 260px;
@@ -132,7 +135,6 @@
             transform: scale(1.02);
         }
 
-        /* الأقسام البينية لعرض الصور بشكل كامل وممتد وصور أكبر */
         .blended-image-section {
             position: relative;
             width: 100%;
@@ -543,7 +545,7 @@
                 
                 <div class="detail-item">
                     الساعة:
-                    <span class="big-time">7:30 م</span>
+                    <span class="big-time">7:00 م</span>
                 </div>
                 
                 <div class="detail-item">
@@ -573,15 +575,7 @@
         <div class="content-padding" style="padding-top: 0; padding-bottom: 0;">
             <div class="henna-container animated-item delay-5">
                 <div class="henna-section">
-                    <div class="henna-title">🎉 حنة العروسة 🎉</div>
-                    <div class="henna-info">
-                        يوم السبت <strong>11 / 7 / 2026</strong><br>
-                        <span>بقاعة بابا دوحة بالفشن</span>
-                    </div>
-                </div>
-
-                <div class="henna-section">
-                    <div class="henna-title">🎉 حنة العريس 🎉</div>
+                    <div class="henna-title">🎉 الحنة 🎉</div>
                     <div class="henna-info">
                         يوم الأحد <strong>12 / 7 / 2026</strong><br>
                         <span>أمام منزل والد العريس</span>
@@ -674,7 +668,7 @@
             }
         }
 
-        const weddingDate = new Date("July 13, 2026 19:30:00").getTime();
+        const weddingDate = new Date("July 13, 2026 19:00:00").getTime();
         const timer = setInterval(function() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
